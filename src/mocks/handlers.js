@@ -1,8 +1,11 @@
-import { http } from 'msw';
+import { http, HttpResponse } from 'msw';
 
 const serverBaseUrl = 'http://localhost:3030';
 export const handlers = [
-  http.get(serverBaseUrl + '/', () => {
-    console.log('its a request');
+  http.get(serverBaseUrl + '/scoops', () => {
+    return HttpResponse.json([
+      { name: 'Chocolate', imagePath: '/images/chocolate' },
+      { name: 'Vanilla', imagePath: '/images/vanilla' },
+    ]);
   }),
 ];
