@@ -18,7 +18,7 @@ export default function Options({ optionType }) {
   useEffect(() => {
     if (optionType)
       axios
-        .get(`http://localhost:3000/${optionType}`)
+        .get(`http://localhost:3030/${optionType}`)
         .then((res) => setItems(res?.data))
         .catch((err) => console.log(err));
   }, [optionType]);
