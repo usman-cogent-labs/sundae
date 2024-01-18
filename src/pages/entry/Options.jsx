@@ -11,16 +11,16 @@ export default function Options({ optionType }) {
     <ItemComponent
       key={item?.name}
       name={item?.name}
-      imagePath={item?.imagPath}
+      imagePath={item?.imagePath}
     />
   ));
 
   useEffect(() => {
-    if (optionType)
-      axios
-        .get(`http://localhost:3030/${optionType}`)
-        .then((res) => setItems(res?.data))
-        .catch((err) => console.log(err));
+    if (!optionType) return;
+    axios
+      .get(`http://localhost:3030/${optionType}`)
+      .then((res) => setItems(res?.data))
+      .catch((err) => console.log(err));
   }, [optionType]);
 
   return <div>{optionItems}</div>;
